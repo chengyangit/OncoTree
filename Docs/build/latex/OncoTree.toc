@@ -1,0 +1,8 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Contents:}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Python APIs created for this project}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}OncoTree module}{1}{subsection.1.1.1}
+\contentsline {subsubsection}{OncoTree class}{1}{subsubsection*.3}
+\contentsline {chapter}{\numberline {2}Updates}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Indices and tables}{5}{chapter.3}
+\contentsline {chapter}{Index}{7}{section*.8}

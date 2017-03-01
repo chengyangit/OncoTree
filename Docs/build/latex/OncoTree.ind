@@ -1,0 +1,19 @@
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter D
+  \item distance() (OncoTree.OncoTree.OncoTree method), \hyperpage{1}
+
+  \indexspace
+  \bigletter H
+  \item homo() (OncoTree.OncoTree.OncoTree method), \hyperpage{1}
+
+  \indexspace
+  \bigletter I
+  \item inclusion() (OncoTree.OncoTree.OncoTree method), \hyperpage{2}
+
+  \indexspace
+  \bigletter O
+  \item OncoTree (class in OncoTree.OncoTree), \hyperpage{1}
+
+\end{theindex}
