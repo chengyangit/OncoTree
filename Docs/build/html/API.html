@@ -59,6 +59,26 @@
 </tbody>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">OncoTree</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OT</span> <span class="o">=</span> <span class="n">OncoTree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="nb">dir</span><span class="p">(</span><span class="n">OT</span><span class="p">)</span>  <span class="c1"># Check all methods applicable to OncoTree class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;OT&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="s1">&#39;homo&#39;</span><span class="p">,</span> <span class="s1">&#39;inclusion&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">url</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;https://raw.githubusercontent.com/cBioPortal/oncotree/master/tumor_tree.txt&#39;</span>  <span class="c1"># This is default cancer type input</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">abbrev</span><span class="p">[</span><span class="s1">&#39;Leukemia&#39;</span><span class="p">]</span>  <span class="c1"># Check cancer type abbreviation. Note that the dictionary key has to be exact match. Since the cancer type terminology is mostly heterogeneous, please double check the cancer type metadata on url page specified by OT.url</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;LEUK&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">OT</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OT</span><span class="o">.</span><span class="n">OT</span> <span class="c1"># Return networkx clasee</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">networkx</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">digraph</span><span class="o">.</span><span class="n">DiGraph</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x21f0450</span><span class="o">&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">OT</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="s1">&#39;ALL&#39;</span><span class="p">)</span>  <span class="c1"># Check the successors of queried cancer type</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;TALL&#39;</span><span class="p">,</span> <span class="s1">&#39;BALL&#39;</span><span class="p">]</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">OT</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="s1">&#39;ALL&#39;</span><span class="p">)</span> <span class="c1"># Check the predecessors of queried cancer type</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;LEUK&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">inclusion</span><span class="p">(</span><span class="s1">&#39;ALL&#39;</span><span class="p">)</span>  <span class="c1"># Check if input cancer type exist in OncoTree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">homo</span><span class="p">(</span><span class="s1">&#39;BALL&#39;</span><span class="p">,</span> <span class="s1">&#39;NSCLC&#39;</span><span class="p">)</span>  <span class="c1"># Check if two input cancer types are within same lineage</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">OT</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s1">&#39;BALL&#39;</span><span class="p">,</span> <span class="s1">&#39;NSCLC&#39;</span><span class="p">)</span>  <span class="c1"># Calculate the distance between two inpit cancer types </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span> 
 </pre></div>
 </div>
 <dl class="method">
