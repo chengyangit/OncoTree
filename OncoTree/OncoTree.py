@@ -15,7 +15,7 @@ class OncoTree():
     :Example:
     
     >>> from OncoTree import *
-    >>> OT = OncoTree
+    >>> OT = OncoTree()
     >>> print dir(OT)  # Check all methods applicable to OncoTree class
     >>> ['OT', '__doc__', '__init__', '__module__', 'distance', 'homo', 'inclusion', 'url']
     >>> print OT.url
