@@ -509,7 +509,7 @@ Thymus (THYMUS)	Thymic Epithelial Tumor (TET)				Thymic Tumor	Purple	C6450	C1266
 Thymus (THYMUS)	Thymic Epithelial Tumor (TET)	Thymic Carcinoma (THYC)			Thymic Tumor	Purple	C7569	C0205969
 Thymus (THYMUS)	Thymic Epithelial Tumor (TET)	Thymoma (THYM)			Thymic Tumor	Purple	C3411	C0040100
 Thymus (THYMUS)	Thymic Neuroendocrine Tumor (TNET)				Thymic Tumor	Purple
-Thyroid (THYROID)	Anaplastic Thyroid Cancer (THAP)				Thyroid Cancer	Teal	C3878	C0238461
+Thyroid (THYROID)	Thyroid Cancer (THAP)				Thyroid Cancer	Teal	C3878	C0238461
 Thyroid (THYROID)	Hurthle Cell Thyroid Cancer (THHC)				Thyroid Cancer	Teal	C4946	C0749424
 Thyroid (THYROID)	Hyalinizing Trabecular Adenoma of the Thyroid (HTAT)				Thyroid Cancer	Teal
 Thyroid (THYROID)	Medullary Thyroid Cancer (THME)				Thyroid Cancer	Teal	C3879	C0238462
