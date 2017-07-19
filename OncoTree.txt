@@ -95,6 +95,7 @@ Bowel (BOWEL)	Small Intestinal Carcinoma (SIC)				Small Bowel Cancer	SaddleBrown
 CNS/Brain (BRAIN)	Choroid Plexus Tumor (CPT)	Choroid Plexus Carcinoma (CPC)			Choroid Plexus Tumor	Gray	C4715	C0431109
 CNS/Brain (BRAIN)	Choroid Plexus Tumor (CPT)	Choroid Plexus Papilloma (CPP)			Choroid Plexus Tumor	Gray	C3698	C0205770
 CNS/Brain (BRAIN)	Choroid Plexus Tumor (CPT)	Atypical Choroid Plexus Papilloma (ACPP)			Choroid Plexus Tumor	Gray	C53686	C1266176
+CNS/Brain (BRAIN)	Glioma (GLI)	Astrocytoma (ASTR)			Glioma	Gray	C60781	C0004114
 CNS/Brain (BRAIN)	Diffuse Glioma (DIFG)	Astrocytoma (ASTR)			Glioma	Gray	C60781	C0004114
 CNS/Brain (BRAIN)	Diffuse Glioma (DIFG)	Anaplastic Astrocytoma (AASTR)			Glioma	Gray	C9477	C0334579
 CNS/Brain (BRAIN)	Diffuse Glioma (DIFG)	Oligodendroglioma (ODG)			Glioma	Gray	C3288	C0751396
