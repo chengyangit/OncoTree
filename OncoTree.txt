@@ -42,7 +42,7 @@ Blood (BLOOD)	Leukemia (LEUK)	Chronic Myelomonocytic Leukemia (CMML)			Leukemia	
 Blood (BLOOD)	Leukemia (LEUK)	Hairy Cell Leukemia (HCL)			Leukemia	LightSalmon	C7402	C0023443
 Blood (BLOOD)	Leukemia (LEUK)	Large Granular Lymphocytic Leukemia (LGLL)			Leukemia	LightSalmon	C4664	C1955861
 Blood (BLOOD)	Multiple Myeloma (MM)				Multiple Myeloma	LightSalmon	C3242	C0026764
-Blood (BLOOD)	Myelodysplasia (MDS)				Myelodysplasia	LightSalmon	C3247	C3463824
+Blood (BLOOD)	Myelodysplastic syndromes (MDS)				Myelodysplasia	LightSalmon	C3247	C3463824
 Blood (BLOOD)	Myeloproliferative Neoplasm (MPN)				Myeloproliferative Neoplasm	LightSalmon	C4345	C1292778
 Blood (BLOOD)	Myeloproliferative Neoplasm (MPN)	Essential Thrombocythaemia (ETC)			Myeloproliferative Neoplasm	LightSalmon	C3407	C0040028
 Blood (BLOOD)	Myeloproliferative Neoplasm (MPN)	Myelofibrosis/Osteomyelofibrosis (MYF)			Myeloproliferative Neoplasm	LightSalmon	C3248	C0026987
