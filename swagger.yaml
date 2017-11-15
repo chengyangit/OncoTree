@@ -1,0 +1,511 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: OncoGxKB API
+  description: OncoGxKB is a curated oncology knowledge containing targetable 
+               mutation and therapeutic agents. This API is used to retreve 
+               gene / cancer type / drug record as well as clinical 
+               recommendation record used in OncoGx pipeline.
+  version: "1.0.0"
+# the domain of the service
+host: Knowledgebase.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api/api
+produces:
+  - application/json
+paths:
+  /ClinRec:
+    get:
+      description: Returns clinical recommendation object based on alteration and cancer type given as parameters. These information is used in onco pipeline
+      parameters:
+        - name: Alteration
+          in: query
+          description: Gene and alteration name
+          required: true
+          type: string
+          
+        - name: Cancer_Ttype
+          in: query
+          description: Cancer type name
+          required: true
+          type: string
+          
+      tags:
+        - ClinRec
+      responses:
+        200:
+          description: ClinRec record object
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClinRec'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /Gene:
+    get:
+      description: Return gene record array of quered gene as parameter or array of available gene in OncoGxKB if NO parameter provided
+      parameters:
+        - name: Gene
+          in: query
+          description: Gene name.
+          required: false
+          type: array
+          items:
+            type: string
+         
+      tags:
+        - Gene
+      responses:
+        200:
+          description: Gene record array
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Gene'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+ 
+  /Cancer:
+    get:
+      description: Return cancer record array of quered cancer type as parameter or array of available cancer type in OncoGxKB if NO parameter provided
+      parameters:
+        - name: Cancer
+          in: query
+          description: Cancer name.
+          required: false
+          type: string
+      tags:
+        - CancerType
+      responses:
+        200:
+          description: Cancer type record array
+          schema:
+            $ref: '#/definitions/CancerType'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /Drug:
+    get:
+      description: Return drug record array of quered drug as parameter or array of available drug in OncoGxKB if NO parameter provided
+      parameters:
+        - name: Drug
+          in: query
+          type: string
+          description: Drug name.
+      tags:
+        - Drug
+      responses:
+        200:
+          description: Drug record array
+          schema:
+            $ref: '#/definitions/Drug'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+            
+            
+            
+definitions:
+  ClinRec:
+    type: object
+    properties:
+      CancerTypeInfo:
+        type: array
+        items:
+          $ref: '#/definitions/CancerType'
+      DrugAssociationInfo:
+        type: array
+        items:
+          $ref: '#/definitions/DrugAssociationInfo'
+      DrugList:
+        type: array
+        items:
+          $ref: '#/definitions/Drug'
+      GeneFreq:
+        type: array
+        items:
+          $ref: '#/definitions/Freq'
+      GeneInfo:
+        type: array
+        items:
+          $ref: '#/definitions/Gene'
+      HomoList:
+        type: array
+        description: Cancer type pairs, pairwise lineage and distance
+        items:
+          type: string
+          example: NSCLC;COCA;False;4
+      VariantFreq:
+        type: array
+        items:
+          $ref: '#/definitions/Freq'
+      VariantInfo:
+        type: array
+        items:
+           $ref: '#/definitions/VariantInfo'
+            
+        
+        
+  VariantInfo:
+    type: object
+    description: Variant record in OncoGxKB
+    properties:
+            Alteration:
+              type: string
+#              description: Alteration name in OncoGxKB
+#              example: V600E
+            Effect:
+              type: string
+              description: Variant effect
+            Gene:
+              type: string
+            MyVariantInfo:
+              type: string
+            VariantEffect:
+              type: string
+              description: Variant's possible effect on phenotype. For example Likely Gain-of-function, Likely Loss-of-function, Likely Neutral, etc
+#              example: Likely Gain-of-function
+            VariantLoc:
+              type: string
+              description: Variant location on genome
+              example: Kinase domain (exon 15)
+            VariantType:
+              type: string
+              description: Variant type could be SNV, Indel, Fusion, amplification, CNV, Duplication or overexpression
+            created_by:
+              type: string
+              description: Persion who created this record
+            created_on:
+              type: string
+              description: Record creation time
+            id:
+              type: string
+              description: Variant record ID in OncoGxKB
+            is_active:
+              type: string
+              description: whether this record is still active
+            modified_by:
+              type: string
+              description: Person who modified this record
+            modified_on:
+              type: string
+              description: Record modification time    
+        
+        
+        
+  Freq:
+      type: object
+      description: Frequency of given mutated gene or variant in cancer type of this record
+      properties:
+        CancerType:
+          type: string
+          description: Cancer type based on OncoTree
+          example: Colorectal Cancer
+        Freq:
+          description: Mutation frequency of queried gene in cancer type of this object
+          example: 12.63%(9280/73480)
+        GeneOrVariant:
+          type: string
+          description: Whether this frequency is regarding to gene or variant
+        VariantType:
+          type: string
+          description: Variant type could be SNV, Indel, Fusion, amplification, CNV, Duplication or overexpression
+        created_by:
+          type: string
+          description: Persion who created this record
+        created_on:
+          type: string
+          description: Record creation time
+        is_active:
+          type: string
+          description: whether this record is still active
+        modified_by:
+          type: string
+          description: Person who modified this record
+        modified_on:
+          type: string
+          description: Record modification time      
+        
+        
+        
+  DrugAssociationInfo:
+      type: object
+      properties:
+        CancerType:
+          type: string
+          description: Cancer name based on OncoTree
+          example: Colorectal Cancer
+        ClinicalSignificance:
+          type: string
+          description: Drug's clinical effect on corresponding cancer type
+          example: Sensitivity
+        Drug:
+          type: array
+          items:
+            type: string
+            description: Drug name
+        Evidence:
+          type: array
+          items:
+            type: string
+            description: Evidence could be from clinical database or publication (PubMed ID)
+            example: 22448344
+        EvidenceLevel:
+          type: integer
+          description: Evidence level could be 1 (recommended by FDA or nccn guidelines) or 2 (claimed in clinical trial in publication)
+          example: 1
+        Variant:
+          type: string
+          description: Gene_Variant name
+          example: BRAF_V600E
+        created_by:
+          type: string
+          description: Person who created
+        created_on:
+          type: string
+          description: Creation time
+        id:
+          type: integer
+          description: DrugAssociationInfo ID in OncoGxKB
+        is_active:
+          type: boolean
+          description: whether this DrugAssociationInfo record is active
+          example: true
+        modefied_by:
+          type: string
+          description: person who modified
+          example: John
+        modified_on:
+          type: string
+          description: modification time
+          example: 2017-11-06 16:22:39
+        
+        
+        
+  Gene:
+    type: object
+    description: Stores gene related information
+    properties:
+      Gene_id:
+        type: integer
+        description: Gene ID in OncoGxKB.
+#        example: 9
+      Name:
+        type: string
+        description: Gene HGNC name.
+        example: BRAF
+      description:
+        type: string
+        description: Gene description.
+      MyGeneInfo:
+        $ref: '#/definitions/MyGeneInfo'
+      IsActive:
+        type: boolean
+        description: Is Active.
+#        example: Yes
+      createdon:
+        type: string
+        description: creation date
+#        example: 01/01/2017
+      createdby:
+        type: string
+        description: created by
+#        example: John
+  
+  
+  MyGeneInfo:
+    type: object
+    description: Stores gene and corresponding proteins related information
+    properties:
+      id: 
+        type: integer
+        format: int64
+      alias:
+        type: array
+        items:
+          type: string
+      ensembl:
+        type: object
+        properties:
+          gene:
+            type: string
+            description: Gene Ensembl ID
+          protein:
+            type: array
+            items:
+              type: string
+              description: Proein Ensembl ID
+          transcript:
+            type: array
+            items:
+              type: string
+              description: Tansctript Ensembl ID
+      entrezgene:
+        type: string
+      genomic_pos_hg19:
+        type: object
+        description: Gene location on genome
+        properties:
+          chr:
+            type: integer
+            format: int64
+            description: chromosome
+            example: 7
+          end:
+            type: integer
+            format: int64
+            description: chromosome ending position
+            example: 140624564
+          start:
+            type: integer
+            format: int64
+            description: chromosome starting position
+            example: 140419127
+          starand:
+            type: integer
+            format: int64
+            description: strand direction
+            example: -1
+      interpro:
+        type: array
+        description: Protein families, domains and functional sites information
+        items:
+          type: object
+          properties:
+            desc:
+              type: string
+              description: description of protein families, domains and functional sites
+            id:
+              type: string
+              description: Interpro ID
+            short_description:
+              type: string
+              description: brief description defined by interpro
+      name:
+        type: string
+        description: Gene name
+      query:
+        type: string
+        description: quered term
+      uniprot:
+        type: object
+        properties:
+          Swiss-Prot:
+            type: string
+            description: Swiss-Prot ID
+          TrEMBL:
+            type: array
+            items:
+              type: string
+              description: TrEMBL ID
+              
+            
+          
+  CancerType:
+#    type: array
+#    items:
+    type: object
+    description: Stores cancer type and corresponding ID in databases
+    properties:
+          CacnerType ID:
+            type: integer
+            description: CacnerType ID in OncoGxKB.
+            example: 30
+          Name:
+            type: string
+            description: Cancer name based on OncoTree.
+            example: Non small cell lung cancer
+          SNOMED ID:
+            type: integer
+            description: SNOMED ID
+            example: 254637007
+          Disease ontology ID:
+            type: integer
+            description: Disease ontology ID.
+            example: 3908
+          OncoTree code:
+            type: string
+            description: OncoTree code.
+            example: NSCLC
+            
+        
+        
+  Drug:
+#    type: array
+#    items:
+    type: object
+    description: Stores drug related information
+    properties:
+        Drug ID:
+          type: integer
+          description: Drug ID in OncoGxKB.
+          example: 3
+        Development name:
+          type: string
+          description: Drug development name
+        Generic name:
+          type: string
+          description: Drug generic name.
+          example: Imatinib
+        Trade name:
+          type: string
+          description: Drug trade name
+          example: Gleevec
+        Drug link:
+          type: string
+          description: Drug link
+          example: http://www.accessdata.fda.gov/drugsatfda_docs/label/2012/021588s035lbl.pdf
+        Drug type:
+          type: string
+          description: Drug type
+          example: ABL1 TKI
+        AvailableinChina:
+          type: boolean
+          description: Availability in China
+          example: Yes
+        is_active:
+          type: boolean
+          description: whether the drug still being active
+          example: true
+        created_by:
+          type: string
+          description: Person who created
+          example: John 
+        created_on:
+          type: string
+          description: creation time
+          example: 2017-11-06 16:22:39
+        modefied_by:
+          type: string
+          description: person who modified
+          example: John
+        modified_on:
+          type: string
+          description: modification time
+          example: 2017-11-06 16:22:39
+        
+          
+          
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
